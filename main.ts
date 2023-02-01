@@ -1,5 +1,5 @@
-const upperScreen: HTMLDivElement = document.getElementById("upper-screen") //all inputs
-const lowerScreen: HTMLDivElement = document.getElementById("display") //users current input
+const upperScreen = document.getElementById("upper-screen") //all inputs
+const lowerScreen = document.getElementById("display") //users current input
 
 
 let calculated: boolean = false //to check if the value if calculated result or not
@@ -40,19 +40,19 @@ buttons.forEach(btn => [
                 if (allValues[0]) {
                     //for negative numbers calcutaion
                     if ((operators[operators.length - 1] == "-") && (btn.innerHTML == "-")) {
-                        if ((upperScreen.innerText)[upperScreen.innerText.length - 1] != (upperScreen.innerText)[upperScreen.innerText.length - 2] &&
-                            (upperScreen.innerText)[upperScreen.innerText.length - 1] != (upperScreen.innerText)[upperScreen.innerText.length - 3]) {
-                            lowerScreen.innerText += "-"
-                            upperScreen.innerText += `${btn.innerHTML}`
+                        if ((upperScreen!.innerText)[upperScreen!.innerText.length - 1] != (upperScreen!.innerText)[upperScreen!.innerText.length - 2] &&
+                            (upperScreen!.innerText)[upperScreen!.innerText.length - 1] != (upperScreen!.innerText)[upperScreen!.innerText.length - 3]) {
+                            lowerScreen!.innerText += "-"
+                            upperScreen!.innerText += `${btn.innerHTML}`
                         }
                     }
                     else if (operators.length + 1 > allValues.length) {
                         break;
                     }
                     else {
-                        upperScreen.innerText += `${btn.innerHTML}`
+                        upperScreen!.innerText += `${btn.innerHTML}`
                         operators.push(btn.innerHTML)
-                        lowerScreen.innerText = ""
+                        lowerScreen!.innerText = ""
                     }
 
                 }
@@ -68,8 +68,8 @@ buttons.forEach(btn => [
                     }
 
                     const result = calculte(operators, allValues)
-                    lowerScreen.innerText = `${result}`
-                    upperScreen.innerText += `=${result}`
+                    lowerScreen!.innerText = `${result}`
+                    upperScreen!.innerText += `=${result}`
                     calculated = true
                 }
                 else {
@@ -77,30 +77,30 @@ buttons.forEach(btn => [
                 }
                 break;
             case ".":
-                if (lowerScreen.innerText.length > 0 && !((lowerScreen.innerText).includes("."))) {
-                    lowerScreen.innerText += "."
-                    upperScreen.innerText += "."
+                if (lowerScreen!.innerText.length > 0 && !((lowerScreen!.innerText).includes("."))) {
+                    lowerScreen!.innerText += "."
+                    upperScreen!.innerText += "."
                 }
                 break;
         }
 
         if (!isNaN((parseInt(btn.innerHTML)))) {
 
-            if (lowerScreen.innerText.length >= 15) { //limit the digit length
+            if (lowerScreen!.innerText.length >= 15) { //limit the digit length
                 alert("Digit limit met")
             } else {
 
-                if (lowerScreen.innerText == "0") {
-                    lowerScreen.innerText = ""
+                if (lowerScreen!.innerText == "0") {
+                    lowerScreen!.innerText = ""
                 }
 
-                upperScreen.innerText += btn.innerHTML
-                lowerScreen.innerText += btn.innerHTML
+                upperScreen!.innerText += btn.innerHTML
+                lowerScreen!.innerText += btn.innerHTML
             }
         }
 
         // lowerScreenValue = lowerScreen.innerText
-        allValues = upperScreen.innerText.split(/[\+\-\*\/=]/g)
+        allValues = upperScreen!.innerText.split(/[\+\-\*\/=]/g)
         // console.log(operators)
         // console.log(allValues)
     })
@@ -174,8 +174,8 @@ function operation(operator: string, val1: number, val2: number): number {
 
 //reset
 function reset(screenVal: string = "", upperValue: string = ""): void {
-    upperScreen.innerText = upperValue
-    lowerScreen.innerText = screenVal
+    upperScreen!.innerText = upperValue
+    lowerScreen!.innerText = screenVal
     allValues = [upperValue]
     // lowerScreenValue = ""
     operators = []
