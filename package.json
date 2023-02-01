@@ -1,6 +1,8 @@
 {
   "name": "jscalculator",
   "private": true,
+  "author": "CodeMode365(Pabin)",
+  "description": "FreeCodeCamp fronend library certification challenge",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
